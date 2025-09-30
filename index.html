@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fionny S. Darmawan | Bioinformatics Portfolio</title>
+    <!-- Load Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+            color: #1f2937;
+        }
+        .section-title {
+            position: relative;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 75%;
+            height: 4px;
+            background-color: #2563eb; /* Blue 600 */
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Hero Section -->
+    <header class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight">Fionny S. Darmawan</h1>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">About</a>
+                <a href="#skills" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Skills</a>
+                <!-- NEW NAVIGATION LINK -->
+                <a href="#experience" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Experience</a>
+                <a href="#projects" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Projects</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Contact</a>
+            </nav>
+            <button class="md:hidden text-gray-600 hover:text-blue-600 focus:outline-none">
+                <!-- Simple hamburger icon (SVG for aesthetic) -->
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
+
+        <!-- Introduction/Hero -->
+        <section class="text-center py-16 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl shadow-lg">
+            <div class="w-32 h-32 mx-auto mb-6">
+                <!-- Placeholder for a profile picture -->
+                <img src="https://placehold.co/128x128/3b82f6/ffffff?text=FD" alt="Profile Picture" class="rounded-full object-cover ring-4 ring-blue-500 shadow-xl">
+            </div>
+            <h2 class="text-5xl font-extrabold text-gray-900 mb-2">Hello, I'm Fionny S. Darmawan</h2>
+            <p class="text-2xl text-gray-700 font-light mb-8">
+                **Bioinformatics Major** focused on **Genomics, Machine Learning, and Data Visualization.**
+            </p>
+            <a href="#contact" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300 shadow-md transform hover:scale-105">
+                View My Projects
+            </a>
+        </section>
+
+        <!-- About & Education Section -->
+        <section id="about">
+            <h3 class="text-4xl font-bold text-gray-800 section-title">About & Education</h3>
+            <div class="mt-8 bg-white p-8 rounded-xl shadow-lg space-y-6">
+
+                <p class="text-gray-700 leading-relaxed text-lg mb-4">
+                    I am a recent graduate from **UC San Diego** with a B.S. in Bioinformatics and a minor in Computer Science (graduating August 2025). My focus lies at the intersection of biology and data, leveraging **Python, R, and machine learning** techniques to analyze complex genomic and biological datasets, particularly in **RNA-seq and sequence analysis**. I am fluent in Indonesian (Bahasa) and proficient in Spanish.
+                </p>
+
+                <!-- Education Details -->
+                <div class="border-t pt-6 border-gray-200">
+                    <h4 class="text-2xl font-bold text-gray-800 mb-2">University of California San Diego</h4>
+                    <p class="text-lg text-gray-600">B.S., Bioinformatics | Minor, Computer Science | Graduated: August 2025</p>
+                    <ul class="list-disc list-inside text-gray-700 mt-3 space-y-1">
+                        <li>**Relevant Coursework:** Applied Genomic Technologies, Molecular Sequence Analysis, Advanced Bioinformatics Lab, Probability & Statistics, Intro to Machine Learning, Biological Databases.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h3 class="text-4xl font-bold text-gray-800 section-title">Core Skills</h3>
+            <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Skill Card 1: Data Analysis -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-blue-500 hover:shadow-xl transition duration-300">
+                    <h4 class="text-xl font-semibold mb-2 text-blue-700">Data Analysis & Visualization</h4>
+                    <p class="text-gray-600">Proficient in **Python** and **R** for data support. Skilled in using **fluorescence microscopy** for image analysis and deriving data from complex biological systems.</p>
+                </div>
+
+                <!-- Skill Card 2: Genomics & Sequencing -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-indigo-500 hover:shadow-xl transition duration-300">
+                    <h4 class="text-xl font-semibold mb-2 text-indigo-700">Genomics & Sequencing</h4>
+                    <p class="text-gray-600">Expertise in RNA, DNA, and protein extraction, **RNA-seq** library preparation, and molecular biology sequencing technologies.</p>
+                </div>
+
+                <!-- Skill Card 3: Research Rigor & Standards -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-green-500 hover:shadow-xl transition duration-300">
+                    <h4 class="text-xl font-semibold mb-2 text-green-700">Research Rigor & Standards</h4>
+                    <p class="text-gray-600">Demonstrated ability to follow protocols precisely, optimize experimental methods, and maintain thorough, accurate records compliant with ethical standards.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Professional Experience Section (NEW SECTION) -->
+        <section id="experience">
+            <h3 class="text-4xl font-bold text-gray-800 section-title">Professional Experience</h3>
+            <div class="mt-8 space-y-8">
+
+                <!-- Experience 1: Research Volunteer (Chen Lab) -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-purple-500">
+                    <h4 class="text-2xl font-bold text-gray-800 mb-2">Research Volunteer</h4>
+                    <p class="text-md font-semibold text-purple-600 mb-3">Chen Lab | UC San Diego | Spring 2025 - current</p>
+                    <ul class="list-disc list-outside text-gray-700 ml-5 space-y-2">
+                        <li>Analyzed relationships between **plasma protein levels and cortical morphology** in approximately $7,000$ participants using **UK BioBank** data.</li>
+                        <li>Identified significant plasma-brain associations and **visualized results** to highlight relevant cortical regions.</li>
+                        <li>Engaged and contributed actively in weekly team meetings, collaborating on research direction.</li>
+                    </ul>
+                </div>
+                
+                <!-- Experience 2: Student Lab Technician (Microscopy Core) -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-pink-500">
+                    <h4 class="text-2xl font-bold text-gray-800 mb-2">Student Lab Technician</h4>
+                    <p class="text-md font-semibold text-pink-600 mb-3">Microscopy Core | UC San Diego | February 2023 - January 2025</p>
+                    <ul class="list-disc list-outside text-gray-700 ml-5 space-y-2">
+                        <li>Utilized **fluorescence microscopy** to capture and analyze images from immunofluorescence experiments.</li>
+                        <li>Documented technical laboratory methods and protocols, training other researchers on standardized workflows to ensure high data quality.</li>
+                        <li>Ensured quality control of clinical samples and maintained compliance with established laboratory protocols.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h3 class="text-4xl font-bold text-gray-800 section-title">Selected Projects</h3>
+            <div class="mt-8 space-y-8">
+
+                <!-- Project 1: Non-invasive Blood Pressure Monitor -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-red-500">
+                    <h4 class="text-2xl font-bold text-gray-800 mb-2">Non-invasive Blood Pressure Monitor</h4>
+                    <p class="text-md font-semibold text-red-600 mb-3">Engineering World Health (UCSD) | Fall 2023 - Spring 2024</p>
+                    <ul class="list-disc list-outside text-gray-700 ml-5 space-y-2">
+                        <li>Collaborated on a team to design a low-cost, non-invasive blood pressure monitor using **Python and Raspberry Pi.**</li>
+                        <li>Developed a process for translating complex data from **machine learning models** into clear, usable results for a clinical audience.</li>
+                        <li>Communicated project updates and findings to engineers, stakeholders, and non-technical partners.</li>
+                    </ul>
+                </div>
+                
+                <!-- Project 2: Genomic Data Curation & Transcriptomic Analysis -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-orange-500">
+                    <h4 class="text-2xl font-bold text-gray-800 mb-2">Genomic Data Curation & Transcriptomic Analysis</h4>
+                    <p class="text-md font-semibold text-orange-600 mb-3">UC San Diego (Bintu Lab) | Fall 2023 - Spring 2024</p>
+                    <ul class="list-disc list-outside text-gray-700 ml-5 space-y-2">
+                        <li>Curated genomic data from peer-reviewed literature and developed a workflow to identify gene expression patterns.</li>
+                        <li>Analyzed **single-cell RNA-seq data** with Python, integrating complex genomic and biological concepts into engaging presentations for faculty and peers.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-white p-10 rounded-xl shadow-xl">
+            <h3 class="text-4xl font-bold text-gray-800 section-title">Contact Me</h3>
+            <p class="mt-4 text-lg text-gray-700 mb-6">
+                I am actively seeking opportunities in Bioinformatics, Data Science, or related fields. Let's connect!
+            </p>
+
+            <div class="space-y-4">
+                <a href="mailto:fdarmawan@ucsd.edu" class="flex items-center space-x-4 p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition duration-300 border border-blue-200">
+                    <!-- Email Icon -->
+                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7"></path></svg>
+                    <span class="text-blue-800 font-medium">fdarmawan@ucsd.edu</span>
+                </a>
+                <a href="https://linkedin.com/in/fionny-darmawan" target="_blank" class="flex items-center space-x-4 p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition duration-300 border border-blue-200">
+                    <!-- LinkedIn Icon (using inline SVG) -->
+                    <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16.35 15.31c.24-.49.38-1.03.38-1.61 0-2.31-1.89-4.2-4.2-4.2s-4.2 1.89-4.2 4.2c0 .58.14 1.12.38 1.61H5.43c.48-1.52 1.58-2.88 3.12-3.76C8.55 11.23 8.32 10 8.32 10H5.25v-2h3.07V6.5h2V8h2V6.5h2V8h3.07v2H15.68c-.23 1.23-.46 2.47-.85 3.71.18.29.35.6.51.93.07.15.13.3.19.46h2.29zM12 4.2c2.09 0 3.79 1.7 3.79 3.79 0 2.09-1.7 3.79-3.79 3.79S8.21 10.08 8.21 7.99 9.91 4.2 12 4.2zm0 13.6c-1.38 0-2.5.91-2.89 2.18H7.49c.55-2.06 2.21-3.66 4.41-3.96.34-.05.69-.08 1.04-.08 2.07 0 3.99.78 5.48 2.15H14.89c-.38-1.27-1.5-2.18-2.89-2.18z"></path></svg>
+                    <span class="text-blue-800 font-medium">linkedin.com/in/fionny-darmawan</span>
+                </a>
+                <a href="https://github.com/your-github-username" target="_blank" class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition duration-300 border border-gray-200">
+                    <!-- GitHub Icon (using inline SVG for simplicity) -->
+                    <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.008c0 4.417 2.865 8.167 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.465-1.11-1.465-.908-.619.069-.605.069-.605 1.004.071 1.531 1.032 1.531 1.032.892 1.529 2.341 1.087 2.91.826.092-.647.35-1.087.636-1.334-2.22-.251-4.555-1.116-4.555-4.942 0-1.09.39-1.984 1.029-2.681-.103-.252-.446-1.274.098-2.659 0 0 .84-.27 2.75 1.022A9.607 9.607 0 0112 6.865c.854.007 1.709.112 2.504.329 1.903-1.292 2.743-1.022 2.743-1.022.546 1.385.202 2.407.098 2.659.639.697 1.028 1.591 1.028 2.681 0 3.834-2.339 4.686-4.566 4.935.359.308.678.92.678 1.855 0 1.334-.012 2.41-.012 2.727 0 .266.18.583.688.484C19.136 20.165 22 16.417 22 12.008 22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+                    <span class="text-gray-800 font-medium">github.com/your-github-username</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm">
+            &copy; <span id="year"></span> Fionny S. Darmawan. All rights reserved. | Hosted with ❤️ on GitHub Pages.
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in the footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Simple mobile navigation toggle (for demonstration)
+        const menuButton = document.querySelector('header button.md\\:hidden');
+        const navMenu = document.querySelector('header nav');
+
+        // You would typically implement a mobile menu that pops up or slides in,
+        // but for this single-file starter, we'll keep it simple or rely on MD styling.
+        // For a full app, you'd add JS here to toggle visibility/classes.
+    </script>
+</body>
+</html>
