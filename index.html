@@ -3,224 +3,769 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fionny Darmawan | Bioinformatics Portfolio</title>
-    <!-- Load Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Use Inter Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <title>Fionny Darmawan | Bioinformatics</title>
+
+    <!--
+    ╔══════════════════════════════════════════════════════╗
+    ║  🌸 FONTS — Change these to try different vibes!     ║
+    ║  Current: Cormorant Garamond (elegant serif titles)  ║
+    ║           DM Sans (clean body text)                  ║
+    ║  Try swapping for: Playfair Display, Lora, Jost      ║
+    ╚══════════════════════════════════════════════════════╝
+    -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <style>
+        /* ══════════════════════════════════════════════════
+           🎨 YOUR COLOR PALETTE — Edit these to retheme!
+           ══════════════════════════════════════════════════
+           Just change the hex values below.
+           All colors on the site pull from these variables.
+
+           Current vibe: warm parchment + dusty rose + sage
+        */
+        :root {
+            --cream:        #faf7f2;   /* 🖼  Page background */
+            --warm-white:   #fff9f5;   /* 🃏  Card background */
+            --blush:        #e8c4b8;   /* 🌸  Primary accent (headers, highlights) */
+            --dusty-rose:   #c9897a;   /* 🌹  Deeper accent (dates, borders) */
+            --mauve:        #a07080;   /* 💜  Hover states, active links */
+            --sage:         #8a9e8a;   /* 🌿  Tag pills, secondary accents */
+            --soft-brown:   #7a5c52;   /* 🍂  Bold text, icons */
+            --text-dark:    #3d2b26;   /* 📝  Main body text */
+            --text-mid:     #7a6860;   /* 📄  Secondary text */
+            --text-light:   #b5a09a;   /* 🌫  Placeholder/muted text */
+            --border:       #ecddd7;   /* ➖  Card borders, dividers */
+        }
+
+        /* ══════════════════════════════════════════════════
+           📐 BASE STYLES
+        */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f7f7f7;
-            color: #1f2937;
+            background-color: var(--cream);
+            color: var(--text-dark);
+            /* 🔤 BODY FONT — change 'DM Sans' to any Google Font name */
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 300;
+            line-height: 1.8;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23faf7f2'/%3E%3Cpath d='M0 0h1v1H0zm2 2h1v1H2z' fill='%23f5ede5' opacity='.4'/%3E%3C/svg%3E");
         }
-        .section-title {
+
+        /* 🔤 HEADING FONT — change 'Cormorant Garamond' to try different looks */
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        /* ══════════════════════════════════════════════════
+           📌 STICKY NAV
+           💡 Remove `position: sticky; top: 0;` to let nav scroll away
+        */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250, 247, 242, 0.88);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--soft-brown);
+            letter-spacing: 0.05em;
+        }
+
+        nav { display: flex; gap: 2rem; }
+
+        nav a {
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-mid);
+            transition: color 0.2s;
             position: relative;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-            display: inline-block;
         }
-        .section-title::after {
+
+        nav a::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -3px; left: 0;
+            width: 0; height: 1px;
+            background: var(--dusty-rose);
+            transition: width 0.3s ease;
+        }
+        nav a:hover { color: var(--dusty-rose); }
+        nav a:hover::after { width: 100%; }
+
+        /* ══════════════════════════════════════════════════
+           🌸 MAIN LAYOUT
+        */
+        main {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 4rem 2rem 6rem;
+            display: flex;
+            flex-direction: column;
+            gap: 6rem;
+        }
+
+        /* ══════════════════════════════════════════════════
+           ✨ HERO
+        */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 3rem 0;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: inline-block;
+            width: 28px; height: 1px;
+            background: var(--sage);
+        }
+
+        .hero-name {
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            line-height: 1.1;
+            color: var(--text-dark);
+            font-style: italic;
+            margin-bottom: 1.2rem;
+        }
+
+        /* 💡 Change this color to change the highlighted part of your name */
+        .hero-name span { color: var(--dusty-rose); font-style: normal; }
+
+        .hero-tagline {
+            font-size: 1.05rem;
+            color: var(--text-mid);
+            max-width: 400px;
+            margin-bottom: 2.2rem;
+            line-height: 1.9;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 0.85rem 2.2rem;
+            background: var(--dusty-rose);
+            color: #fff;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .btn-primary:hover { background: var(--mauve); transform: translateY(-2px); }
+
+        /* Decorative stacked cards on the right */
+        .hero-collage {
+            position: relative;
+            height: 420px;
+        }
+
+        .hero-collage-img {
+            position: absolute;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(160, 112, 128, 0.15);
+            background: var(--blush);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--dusty-rose);
+        }
+
+        .hero-card-1 {
+            width: 200px; height: 240px;
+            top: 0; right: 60px;
+            background: var(--warm-white);
+            border: 1px solid var(--border);
+            padding: 1.2rem;
+            transform: rotate(2deg);
+        }
+
+        .hero-card-2 {
+            width: 180px; height: 220px;
+            top: 80px; right: 0;
+            background: #f0e8e4;
+            border: 1px solid var(--border);
+            padding: 1.2rem;
+            transform: rotate(-3deg);
+        }
+
+        .hero-card-3 {
+            width: 160px; height: 180px;
+            bottom: 20px; right: 80px;
+            background: #e8ede8;
+            border: 1px solid #c8d8c8;
+            padding: 1rem;
+            transform: rotate(1deg);
+        }
+
+        .hero-card-inner {
+            width: 100%; height: 65%;
+            background: var(--blush);
+            border-radius: 6px;
+            margin-bottom: 0.7rem;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .hero-card-label {
+            font-size: 0.72rem;
+            color: var(--text-mid);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 300;
+        }
+
+        /* ══════════════════════════════════════════════════
+           📚 SECTION HEADINGS
+        */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            font-style: italic;
+            color: var(--text-dark);
+            white-space: nowrap;
+        }
+
+        .section-rule {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, var(--border), transparent);
+        }
+
+        .section-num {
+            font-size: 0.72rem;
+            letter-spacing: 0.15em;
+            color: var(--text-light);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+        }
+
+        /* ══════════════════════════════════════════════════
+           🃏 CARDS
+        */
+        .card {
+            background: var(--warm-white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.2rem;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 40px rgba(160, 112, 128, 0.12);
+            transform: translateY(-3px);
+        }
+
+        /* ══════════════════════════════════════════════════
+           🎓 ABOUT
+        */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .about-bio { font-size: 1.05rem; color: var(--text-mid); line-height: 1.9; }
+        .about-bio strong { color: var(--soft-brown); font-weight: 600; }
+
+        .edu-card {
+            background: linear-gradient(135deg, #fdf0eb, #f5ebe8);
+            border: 1px solid var(--blush);
+        }
+
+        .edu-school { font-size: 1.35rem; color: var(--soft-brown); margin-bottom: 0.4rem; }
+
+        .edu-degree {
+            font-size: 0.88rem;
+            color: var(--dusty-rose);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+
+        /* 💡 TAG PILLS — change background/color/border to restyle these badges */
+        .tag {
+            background: var(--cream);
+            border: 1px solid var(--blush);
+            color: var(--mauve);
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            font-weight: 500;
+        }
+
+        /* ══════════════════════════════════════════════════
+           ✦ SKILLS
+        */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+        }
+
+        .skill-card {
+            background: var(--warm-white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.8rem;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .skill-card:hover {
+            box-shadow: 0 8px 28px rgba(160, 112, 128, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* 💡 TOP ACCENT COLOR per skill card — change these 3 colors */
+        .skill-card:nth-child(1) { border-top: 3px solid var(--blush); }
+        .skill-card:nth-child(2) { border-top: 3px solid var(--sage); }
+        .skill-card:nth-child(3) { border-top: 3px solid #c8b4d0; }
+
+        .skill-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+        .skill-title { font-size: 1.1rem; color: var(--soft-brown); margin-bottom: 0.6rem; }
+        .skill-desc { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; }
+
+        /* ══════════════════════════════════════════════════
+           💼 EXPERIENCE + PROJECTS (timeline)
+        */
+        .timeline { display: flex; flex-direction: column; gap: 1.2rem; }
+
+        .timeline-card {
+            background: var(--warm-white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem 2.2rem;
+            display: grid;
+            grid-template-columns: 1fr 2.5fr;
+            gap: 2rem;
+            align-items: start;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .timeline-card:hover {
+            box-shadow: 0 8px 28px rgba(160, 112, 128, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .timeline-date {
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            color: var(--dusty-rose);
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-org { font-size: 0.88rem; color: var(--text-light); line-height: 1.5; }
+        .timeline-title { font-size: 1.4rem; color: var(--text-dark); margin-bottom: 0.8rem; }
+
+        .timeline-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+        .timeline-list li {
+            font-size: 0.92rem;
+            color: var(--text-mid);
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        /* 💡 BULLET CHARACTER — replace '✦' with ✿ ♡ · › or any emoji */
+        .timeline-list li::before {
+            content: '✦';
+            position: absolute;
             left: 0;
-            width: 75%;
-            height: 4px;
-            background-color: #2563eb; /* Blue 600 */
-            border-radius: 9999px;
+            font-size: 0.5rem;
+            color: var(--blush);
+            top: 0.45rem;
+        }
+
+        /* ══════════════════════════════════════════════════
+           📬 CONTACT
+        */
+        .contact-wrapper {
+            background: linear-gradient(135deg, #fdf0eb 0%, #f0ece8 50%, #eaf0ea 100%);
+            border: 1px solid var(--blush);
+            border-radius: 24px;
+            padding: 3.5rem;
+            text-align: center;
+        }
+
+        .contact-title { font-size: 2.8rem; font-style: italic; color: var(--text-dark); margin-bottom: 0.7rem; }
+        .contact-sub { font-size: 1rem; color: var(--text-mid); margin-bottom: 2.5rem; }
+
+        .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.85rem 1.6rem;
+            background: var(--warm-white);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.88rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: all 0.25s;
+        }
+
+        .contact-btn:hover {
+            background: var(--dusty-rose);
+            border-color: var(--dusty-rose);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 137, 122, 0.3);
+        }
+
+        .contact-btn svg { width: 16px; height: 16px; }
+
+        /* ══════════════════════════════════════════════════
+           🔻 FOOTER
+        */
+        footer {
+            background: var(--warm-white);
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.82rem;
+            color: var(--text-light);
+            letter-spacing: 0.05em;
+        }
+
+        footer span { color: var(--blush); }
+
+        /* ══════════════════════════════════════════════════
+           📱 RESPONSIVE
+        */
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; }
+            .hero-collage { display: none; }
+            .about-grid { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .timeline-card { grid-template-columns: 1fr; gap: 0.5rem; }
+            nav { gap: 1rem; }
+            nav a { font-size: 0.72rem; }
         }
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <!-- Header & Hero Section -->
-    <header class="bg-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight">Fionny S. Darmawan</h1>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#about" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">About</a>
-                <a href="#skills" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Skills</a>
-                <a href="#experience" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Experience</a>
-                <a href="#projects" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Projects</a>
-                <a href="current-projects.html" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Current Projects</a>
-                <a href="#contact" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Contact</a>
+    <!-- ═══════════════════════════════════════
+         NAV
+         💡 To add a link: copy one <a> tag
+    ══════════════════════════════════════════ -->
+    <header>
+        <div class="nav-inner">
+            <div class="nav-logo">fionny s. darmawan</div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
             </nav>
-            <button class="md:hidden text-gray-600 hover:text-blue-600 focus:outline-none">
-                <!-- Simple hamburger icon (SVG for aesthetic) -->
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
+    <main>
 
-        <!-- Introduction/Hero -->
-        <section class="text-center py-16 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl shadow-lg">
-            <div class="w-32 h-32 mx-auto mb-6">
-                <!-- Placeholder for a profile picture -->
-                <img src="https://placehold.co/128x128/3b82f6/ffffff?text=FD" alt="Profile Picture" class="rounded-full object-cover ring-4 ring-blue-500 shadow-xl">
-            </div>
-            <h2 class="text-5xl font-extrabold text-gray-900 mb-2">Hi! I'm Fionny Darmawan</h2>
-            <p class="text-2xl text-gray-700 font-light mb-8">
-                <strong> Looking to apply my educational/career experience in the bioinformatics industry >_<</strong>
-            </p>
-            <a href="#contact" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300 shadow-md transform hover:scale-105">
-                View My Projects
-            </a>
-        </section>
+        <!-- ═══════════════════════════════════════
+             🌸 HERO
+        ══════════════════════════════════════════ -->
+        <section class="hero">
+            <div class="hero-text">
+                <p class="hero-eyebrow">Bioinformatics Portfolio</p>
 
-        <!-- About & Education Section -->
-        <section id="about">
-            <h3 class="text-4xl font-bold text-gray-800 section-title">About & Education</h3>
-            <div class="mt-8 bg-white p-8 rounded-xl shadow-lg space-y-6">
+                <!-- 💡 YOUR NAME — edit here -->
+                <h2 class="hero-name">Hi, I'm<br><span>Fionny</span><br>Darmawan</h2>
 
-                <p class="text-gray-700 leading-relaxed text-lg mb-4">
-                    I am a recent graduate from <strong>UC San Diego</strong> with a B.S. in Bioinformatics and a minor in Computer Science. My focus lies at the intersection of biology and data, leveraging <strong>Python, R, and machine learning</strong> techniques to analyze complex genomic and biological datasets, particularly in <strong>RNA-seq and sequence analysis</strong>. I am fluent in Indonesian (Bahasa) and proficient in Spanish.
+                <!-- 💡 YOUR TAGLINE — edit here -->
+                <p class="hero-tagline">
+                    Recent UCSD grad at the intersection of biology &amp; data.
+                    Looking to apply my experience in the bioinformatics industry ✿
                 </p>
 
-                <!-- Education Details -->
-                <div class="border-t pt-6 border-gray-200">
-                    <h4 class="text-2xl font-bold text-gray-800 mb-2">University of California San Diego</h4>
-                    <p class="text-lg text-gray-600">B.S., Bioinformatics | Minor, Computer Science | Graduated: August 2025</p>
-                    <ul class="list-disc list-inside text-gray-700 mt-3 space-y-1">
-                        <li><strong>Relevant Coursework:</strong> Genomic Technologies, Advanced Bioinformatics Lab, Probability & Statistics, Molecular Sequence Analysis, Biological Databases, Intro to Machine Learning, Design & Analysis of Algorithms, Advanced Data Structures.</li>
-                    </ul>
+                <a href="#projects" class="btn-primary">View My Work</a>
+            </div>
+
+            <!-- Decorative polaroid-style cards — purely aesthetic -->
+            <div class="hero-collage">
+                <div class="hero-collage-img hero-card-1">
+                    <div style="width:100%">
+                        <div class="hero-card-inner">🧬</div>
+                        <div class="hero-card-label">RNA-seq analysis</div>
+                    </div>
+                </div>
+                <div class="hero-collage-img hero-card-2">
+                    <div style="width:100%">
+                        <div class="hero-card-inner" style="background:#c8d8c8;">🔬</div>
+                        <div class="hero-card-label">genomics & sequencing</div>
+                    </div>
+                </div>
+                <div class="hero-collage-img hero-card-3">
+                    <div style="width:100%">
+                        <div class="hero-card-inner" style="background:#d0c4d8; height:60%">🐍</div>
+                        <div class="hero-card-label">python & R</div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
+        <!-- ═══════════════════════════════════════
+             🎓 ABOUT & EDUCATION
+        ══════════════════════════════════════════ -->
+        <section id="about">
+            <div class="section-header">
+                <span class="section-num">01</span>
+                <h3 class="section-title">About & Education</h3>
+                <div class="section-rule"></div>
+            </div>
+
+            <div class="about-grid">
+                <div class="card">
+                    <!-- 💡 YOUR BIO — edit this paragraph -->
+                    <p class="about-bio">
+                        I'm a recent graduate from <strong>UC San Diego</strong> with a B.S. in Bioinformatics
+                        and a minor in Computer Science. My focus lies at the intersection of biology and data,
+                        leveraging <strong>Python, R, and machine learning</strong> to analyze complex genomic
+                        datasets — particularly in <strong>RNA-seq and sequence analysis</strong>.
+                        I'm fluent in Indonesian (Bahasa) and proficient in Spanish.
+                    </p>
+                    <div class="tag-list">
+                        <!-- 💡 YOUR TAGS — add or remove these freely -->
+                        <span class="tag">Python</span>
+                        <span class="tag">R</span>
+                        <span class="tag">RNA-seq</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Genomics</span>
+                        <span class="tag">Bahasa Indonesia</span>
+                        <span class="tag">Spanish</span>
+                    </div>
+                </div>
+
+                <div class="card edu-card">
+                    <h4 class="edu-school">UC San Diego</h4>
+                    <!-- 💡 YOUR DEGREE INFO — edit here -->
+                    <p class="edu-degree">B.S. Bioinformatics · Minor CS · Aug 2025</p>
+                    <p style="font-size:0.88rem; color:var(--text-mid); line-height:1.7;">
+                        <strong style="color:var(--soft-brown)">Coursework:</strong><br>
+                        Genomic Technologies · Advanced Bioinformatics Lab ·
+                        Molecular Sequence Analysis · Biological Databases ·
+                        Intro to Machine Learning · Advanced Data Structures
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════
+             ✦ SKILLS
+        ══════════════════════════════════════════ -->
         <section id="skills">
-            <h3 class="text-4xl font-bold text-gray-800 section-title">Core Skills</h3>
-            <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="section-header">
+                <span class="section-num">02</span>
+                <h3 class="section-title">Core Skills</h3>
+                <div class="section-rule"></div>
+            </div>
 
-                <!-- Skill Card 1: Data Analysis -->
-                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-blue-500 hover:shadow-xl transition duration-300">
-                    <h4 class="text-xl font-semibold mb-2 text-blue-700">Data Analysis & Visualization</h4>
-                    <p class="text-gray-600">Proficient in <strong>Python</strong> and <strong>R</strong> for data analysis and visualization. Experience with scripting, programming, and commonly-used bioinformatics software.</p>
+            <div class="skills-grid">
+                <!-- 💡 SKILL CARD — duplicate this block to add more skills -->
+                <div class="skill-card">
+                    <div class="skill-icon">📊</div>
+                    <h4 class="skill-title">Data Analysis & Visualization</h4>
+                    <p class="skill-desc">Proficient in Python and R for analysis and visualization. Experience with scripting and commonly-used bioinformatics software.</p>
                 </div>
 
-                <!-- Skill Card 2: Genomics & Bioinformatics -->
-                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-indigo-500 hover:shadow-xl transition duration-300">
-                    <h4 class="text-xl font-semibold mb-2 text-indigo-700">Genomics & Bioinformatics</h4>
-                    <p class="text-gray-600">Strong understanding of genomics, sequencing applications, and bioinformatics concepts. Experience troubleshooting data analysis workflows and experimental methods.</p>
+                <div class="skill-card">
+                    <div class="skill-icon">🧬</div>
+                    <h4 class="skill-title">Genomics & Bioinformatics</h4>
+                    <p class="skill-desc">Strong understanding of genomics, sequencing applications, and bioinformatics concepts. Experience troubleshooting data workflows.</p>
                 </div>
 
-                <!-- Skill Card 3: Communication & Documentation -->
-                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-green-500 hover:shadow-xl transition duration-300">
-                    <h4 class="text-xl font-semibold mb-2 text-green-700">Communication & Documentation</h4>
-                    <p class="text-gray-600">Strong written and verbal communication skills. Experience creating technical documentation, reports, and presenting complex data to diverse audiences.</p>
+                <div class="skill-card">
+                    <div class="skill-icon">💬</div>
+                    <h4 class="skill-title">Communication & Documentation</h4>
+                    <p class="skill-desc">Strong written and verbal skills. Experience with technical documentation, reports, and presenting complex data to diverse audiences.</p>
                 </div>
             </div>
         </section>
-        
-        <!-- Professional Experience Section -->
+
+        <!-- ═══════════════════════════════════════
+             💼 EXPERIENCE
+        ══════════════════════════════════════════ -->
         <section id="experience">
-            <h3 class="text-4xl font-bold text-gray-800 section-title">Professional Experience</h3>
-            <div class="mt-8 space-y-8">
+            <div class="section-header">
+                <span class="section-num">03</span>
+                <h3 class="section-title">Experience</h3>
+                <div class="section-rule"></div>
+            </div>
 
-                <!-- Experience 1: Specimen Processor -->
-                <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-emerald-500">
-                    <h4 class="text-2xl font-bold text-gray-800 mb-2">Specimen Processor</h4>
-                    <p class="text-md font-semibold text-emerald-600 mb-3">Myriad Genetics | December 2024 - current</p>
-                    <ul class="list-disc list-outside text-gray-700 ml-5 space-y-2">
-                        <li>Execute strict compliance protocols ensuring data integrity through verification and quality control processes.</li>
-                        <li>Contribute to workflow optimization in a fast-paced laboratory environment.</li>
-                        <li>Operate independently while maintaining high standards of quality and accuracy.</li>
-                    </ul>
+            <div class="timeline">
+
+                <!-- 💡 EXPERIENCE ENTRY — duplicate this block to add more -->
+                <div class="timeline-card">
+                    <div class="timeline-meta">
+                        <p class="timeline-date">Dec 2024 – Present</p>
+                        <p class="timeline-org">Myriad Genetics</p>
+                    </div>
+                    <div>
+                        <h4 class="timeline-title">Specimen Processor</h4>
+                        <ul class="timeline-list">
+                            <li>Execute strict compliance protocols ensuring data integrity through verification and quality control.</li>
+                            <li>Contribute to workflow optimization in a fast-paced laboratory environment.</li>
+                            <li>Operate independently while maintaining high standards of quality and accuracy.</li>
+                        </ul>
+                    </div>
                 </div>
-                
-                <!-- Experience 2: Student Lab Technician (Microscopy Core) -->
-                <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-pink-500">
-                    <h4 class="text-2xl font-bold text-gray-800 mb-2">Student Lab Technician</h4>
-                    <p class="text-md font-semibold text-pink-600 mb-3">Microscopy Core | UC San Diego | February 2023 - January 2025</p>
-                    <ul class="list-disc list-outside text-gray-700 ml-5 space-y-2">
-                        <li>Utilized fluorescence microscopy to capture and analyze images from experiments.</li>
-                        <li>Developed and documented technical procedures for equipment training and standardized workflows.</li>
-                        <li>Managed specialized laboratory equipment in a fast-paced environment ensuring operational support.</li>
-                    </ul>
+
+                <div class="timeline-card">
+                    <div class="timeline-meta">
+                        <p class="timeline-date">Feb 2023 – Jan 2025</p>
+                        <p class="timeline-org">Microscopy Core · UC San Diego</p>
+                    </div>
+                    <div>
+                        <h4 class="timeline-title">Student Lab Technician</h4>
+                        <ul class="timeline-list">
+                            <li>Utilized fluorescence microscopy to capture and analyze images from experiments.</li>
+                            <li>Developed and documented technical procedures for equipment training and standardized workflows.</li>
+                            <li>Managed specialized laboratory equipment ensuring consistent operational support.</li>
+                        </ul>
+                    </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- Projects Section -->
+        <!-- ═══════════════════════════════════════
+             🔬 PROJECTS
+        ══════════════════════════════════════════ -->
         <section id="projects">
-            <h3 class="text-4xl font-bold text-gray-800 section-title">Selected Projects</h3>
-            <div class="mt-8 space-y-8">
+            <div class="section-header">
+                <span class="section-num">04</span>
+                <h3 class="section-title">Selected Projects</h3>
+                <div class="section-rule"></div>
+            </div>
 
-                <!-- Project 1: Non-invasive Blood Pressure Monitor -->
-                <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-red-500">
-                    <h4 class="text-2xl font-bold text-gray-800 mb-2">Non-invasive Blood Pressure Monitor</h4>
-                    <p class="text-md font-semibold text-red-600 mb-3">Engineering World Health (UCSD) | Fall 2023 - Spring 2024</p>
-                    <ul class="list-disc list-outside text-gray-700 ml-5 space-y-2">
-                        <li>Developed and validated predictive machine learning models using Python for clinical applications.</li>
-                        <li>Prepared technical reports to communicate data-driven results to diverse audiences.</li>
-                        <li>Collaborated on designing a low-cost medical device using Raspberry Pi and data analysis software.</li>
-                    </ul>
+            <div class="timeline">
+
+                <!-- 💡 PROJECT ENTRY — duplicate this block to add more -->
+                <div class="timeline-card">
+                    <div class="timeline-meta">
+                        <p class="timeline-date">Fall '23 – Spring '24</p>
+                        <p class="timeline-org">Engineering World Health · UCSD</p>
+                    </div>
+                    <div>
+                        <h4 class="timeline-title">Non-invasive Blood Pressure Monitor</h4>
+                        <ul class="timeline-list">
+                            <li>Developed and validated predictive machine learning models in Python for clinical applications.</li>
+                            <li>Prepared technical reports communicating data-driven results to diverse audiences.</li>
+                            <li>Collaborated on designing a low-cost medical device using Raspberry Pi.</li>
+                        </ul>
+                    </div>
                 </div>
-                
-                <!-- Project 2: Genomic Data Curation & Transcriptomic Analysis -->
-                <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-orange-500">
-                    <h4 class="text-2xl font-bold text-gray-800 mb-2">Genomic Data Curation & Transcriptomic Analysis</h4>
-                    <p class="text-md font-semibold text-orange-600 mb-3">UC San Diego (Bintu Lab) | Fall 2023 - Spring 2024</p>
-                    <ul class="list-disc list-outside text-gray-700 ml-5 space-y-2">
-                        <li>Processed and analyzed single-cell transcriptomic data using Python and R.</li>
-                        <li>Utilized data visualization tools to effectively communicate complex biological findings.</li>
-                        <li>Curated genomic data from peer-reviewed literature to identify gene expression patterns.</li>
-                    </ul>
+
+                <div class="timeline-card">
+                    <div class="timeline-meta">
+                        <p class="timeline-date">Fall '23 – Spring '24</p>
+                        <p class="timeline-org">Bintu Lab · UC San Diego</p>
+                    </div>
+                    <div>
+                        <h4 class="timeline-title">Genomic Data Curation & Transcriptomic Analysis</h4>
+                        <ul class="timeline-list">
+                            <li>Processed and analyzed single-cell transcriptomic data using Python and R.</li>
+                            <li>Utilized data visualization tools to communicate complex biological findings.</li>
+                            <li>Curated genomic data from peer-reviewed literature to identify gene expression patterns.</li>
+                        </ul>
+                    </div>
                 </div>
 
             </div>
         </section>
 
+        <!-- ═══════════════════════════════════════
+             📬 CONTACT
+        ══════════════════════════════════════════ -->
+        <section id="contact">
+            <div class="contact-wrapper">
+                <h3 class="contact-title">Let's connect ✿</h3>
+                <!-- 💡 YOUR CONTACT SUBTEXT -->
+                <p class="contact-sub">Actively seeking opportunities in Bioinformatics, Data Science, or related fields.</p>
 
-        <!-- Contact Section -->
-        <section id="contact" class="bg-white p-10 rounded-xl shadow-xl">
-            <h3 class="text-4xl font-bold text-gray-800 section-title">Contact Me</h3>
-            <p class="mt-4 text-lg text-gray-700 mb-6">
-                I am actively seeking opportunities in Bioinformatics, Data Science, or related fields. Let's connect!
-            </p>
+                <div class="contact-links">
+                    <!-- 💡 YOUR EMAIL — change href="mailto:..." -->
+                    <a href="mailto:fdarmawan@ucsd.edu" class="contact-btn">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7"/></svg>
+                        fdarmawan@ucsd.edu
+                    </a>
 
-            <div class="space-y-4">
-                <a href="mailto:fdarmawan@ucsd.edu" class="flex items-center space-x-4 p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition duration-300 border border-blue-200">
-                    <!-- Email Icon -->
-                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7"></path></svg>
-                    <span class="text-blue-800 font-medium">fdarmawan@ucsd.edu</span>
-                </a>
-                <a href="https://linkedin.com/in/fionny-darmawan" target="_blank" class="flex items-center space-x-4 p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition duration-300 border border-blue-200">
-                    <!-- LinkedIn Icon (using inline SVG) -->
-                    <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16.35 15.31c.24-.49.38-1.03.38-1.61 0-2.31-1.89-4.2-4.2-4.2s-4.2 1.89-4.2 4.2c0 .58.14 1.12.38 1.61H5.43c.48-1.52 1.58-2.88 3.12-3.76C8.55 11.23 8.32 10 8.32 10H5.25v-2h3.07V6.5h2V8h2V6.5h2V8h3.07v2H15.68c-.23 1.23-.46 2.47-.85 3.71.18.29.35.6.51.93.07.15.13.3.19.46h2.29zM12 4.2c2.09 0 3.79 1.7 3.79 3.79 0 2.09-1.7 3.79-3.79 3.79S8.21 10.08 8.21 7.99 9.91 4.2 12 4.2zm0 13.6c-1.38 0-2.5.91-2.89 2.18H7.49c.55-2.06 2.21-3.66 4.41-3.96.34-.05.69-.08 1.04-.08 2.07 0 3.99.78 5.48 2.15H14.89c-.38-1.27-1.5-2.18-2.89-2.18z"></path></svg>
-                    <span class="text-blue-800 font-medium">linkedin.com/in/fionny-darmawan</span>
-                </a>
-                <a href="https://github.com/your-github-username" target="_blank" class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition duration-300 border border-gray-200">
-                    <!-- GitHub Icon (using inline SVG for simplicity) -->
-                    <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.008c0 4.417 2.865 8.167 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.465-1.11-1.465-.908-.619.069-.605.069-.605 1.004.071 1.531 1.032 1.531 1.032.892 1.529 2.341 1.087 2.91.826.092-.647.35-1.087.636-1.334-2.22-.251-4.555-1.116-4.555-4.942 0-1.09.39-1.984 1.029-2.681-.103-.252-.446-1.274.098-2.659 0 0 .84-.27 2.75 1.022A9.607 9.607 0 0112 6.865c.854.007 1.709.112 2.504.329 1.903-1.292 2.743-1.022 2.743-1.022.546 1.385.202 2.407.098 2.659.639.697 1.028 1.591 1.028 2.681 0 3.834-2.339 4.686-4.566 4.935.359.308.678.92.678 1.855 0 1.334-.012 2.41-.012 2.727 0 .266.18.583.688.484C19.136 20.165 22 16.417 22 12.008 22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
-                    <span class="text-gray-800 font-medium">github.com/your-github-username</span>
-                </a>
+                    <!-- 💡 YOUR LINKEDIN — change href -->
+                    <a href="https://linkedin.com/in/fionny-darmawan" target="_blank" class="contact-btn">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                        LinkedIn
+                    </a>
+
+                    <!-- 💡 YOUR GITHUB — change href -->
+                    <a href="https://github.com/your-github-username" target="_blank" class="contact-btn">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.008c0 4.417 2.865 8.167 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.465-1.11-1.465-.908-.619.069-.605.069-.605 1.004.071 1.531 1.032 1.531 1.032.892 1.529 2.341 1.087 2.91.826.092-.647.35-1.087.636-1.334-2.22-.251-4.555-1.116-4.555-4.942 0-1.09.39-1.984 1.029-2.681-.103-.252-.446-1.274.098-2.659 0 0 .84-.27 2.75 1.022A9.607 9.607 0 0112 6.865c.854.007 1.709.112 2.504.329 1.903-1.292 2.743-1.022 2.743-1.022.546 1.385.202 2.407.098 2.659.639.697 1.028 1.591 1.028 2.681 0 3.834-2.339 4.686-4.566 4.935.359.308.678.92.678 1.855 0 1.334-.012 2.41-.012 2.727 0 .266.18.583.688.484C19.136 20.165 22 16.417 22 12.008 22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+                        GitHub
+                    </a>
+                </div>
             </div>
         </section>
+
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm">
-            &copy; <span id="year"></span> Fionny S. Darmawan. All rights reserved. | Hosted with ❤️ on GitHub Pages.
-        </div>
+    <footer>
+        &copy; <span id="year"></span> <span>Fionny S. Darmawan</span> · made with ♡
     </footer>
 
     <script>
-        // Set current year in the footer
         document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Simple mobile navigation toggle (for demonstration)
-        const menuButton = document.querySelector('header button.md\\:hidden');
-        const navMenu = document.querySelector('header nav');
-
-        // You would typically implement a mobile menu that pops up or slides in,
-        // but for this single-file starter, we'll keep it simple or rely on MD styling.
-        // For a full app, you'd add JS here to toggle visibility/classes.
     </script>
 </body>
 </html>
